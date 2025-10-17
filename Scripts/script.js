@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 async (position) => {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
-                    let loadCity = await getCityWeather(lat, lon);
+                    let loadCity = await getLoadCityWeather(lat, lon);
                     await updateWeatherUI(loadCity);
                 }
             )

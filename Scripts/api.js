@@ -13,7 +13,7 @@ async function getCityWeather(city) {
     }
 }
 
-async function getCityWeather(lat, lon) {
+async function getLoadCityWeather(lat, lon) {
     try {
         let result = await fetch(`${BASE_URL}?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
         const data = await result.json();
