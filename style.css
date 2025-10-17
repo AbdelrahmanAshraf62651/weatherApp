@@ -1,0 +1,289 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background: url('./background imgs/default.jpg') center/cover no-repeat fixed;
+    color: #fff;
+    overflow-x: hidden;
+    transition: background-image 0.2s ease-in-out;
+}
+
+.glass {
+    background: rgba(33, 37, 41, 0.55);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* INPUT CONTAINER */
+.city-input {
+    width: 25%;
+    padding: 10px 16px;
+    border-radius: 99px;
+    border: 3px solid transparent;
+    background: rgb(0, 0, 0, 0.15);
+    outline: none;
+    font-weight: 500;
+    transition: 0.25s border;
+    padding-right: 45px;
+    color: #fff;
+}
+
+.city-input:focus {
+    border: 3px solid rgb(0, 0, 0, 0.15);
+}
+
+.city-input::placeholder {
+    color: rgb(255, 255, 255, 0.75);
+}
+
+.search-btn {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    display: flex;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* END INPUT CONTAINER */
+
+/* === Hourly and Weekly Scroll Styles === */
+
+/* Consistent scrollbar style */
+.hourly-scroll::-webkit-scrollbar,
+.weekly-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hourly-scroll::-webkit-scrollbar-thumb,
+.weekly-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+
+/* hourly & weekly cards gap */
+
+.weekly-scroll,
+.hourly-scroll {
+    overflow-x: auto;
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* === Hourly Cards === */
+.hour-card {
+    flex: 0 0 auto;
+    width: 80px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* === Weekly Cards === */
+.weekly-card {
+    flex: 0 0 auto;
+    min-width: 120px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s ease;
+}
+
+.weekly-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Weekly section */
+.weekly-card {
+    flex: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    padding: 1rem 0.5rem;
+}
+
+.weekly-icon {
+    font-size: 2rem;
+}
+
+/*  Glow Hover Effect for Hourly Cards */
+.hour-card {
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+}
+
+.hour-card:hover {
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: 0 0 18px rgba(255, 255, 255, 0.25) inset,
+        0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Optional: Glow intensifies when icon is hovered */
+.hour-card .fs-4 {
+    transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hour-card:hover .fs-4 {
+    transform: scale(1.15);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+/* ✨ Glow colors based on weather type */
+.hour-card.sunny:hover {
+    box-shadow: 0 0 20px rgba(255, 183, 0, 0.4) inset,
+        0 0 15px rgba(255, 183, 0, 0.25);
+    background: rgba(255, 200, 0, 0.1);
+}
+
+.hour-card.cloudy:hover {
+    box-shadow: 0 0 20px rgba(200, 200, 200, 0.25) inset,
+        0 0 12px rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.hour-card.rainy:hover {
+    box-shadow: 0 0 20px rgba(0, 150, 255, 0.35) inset,
+        0 0 12px rgba(0, 150, 255, 0.2);
+    background: rgba(0, 150, 255, 0.1);
+}
+
+.hour-card.stormy:hover {
+    box-shadow: 0 0 20px rgba(150, 80, 255, 0.4) inset,
+        0 0 12px rgba(150, 80, 255, 0.2);
+    background: rgba(150, 80, 255, 0.1);
+}
+
+.hour-card.night:hover {
+    box-shadow: 0 0 20px rgba(100, 150, 255, 0.4) inset,
+        0 0 12px rgba(100, 150, 255, 0.2);
+    background: rgba(100, 150, 255, 0.08);
+}
+
+/* Scrollbar */
+#hourlyStrip::-webkit-scrollbar {
+    height: 6px;
+}
+
+#hourlyStrip::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+
+/* Data Color */
+#currentTemp,
+#currentCondition,
+#wind,
+#humidity,
+#pressure,
+#clouds,
+#feelsLike,
+#visibility,
+#sunTimes,
+#today {
+    color: #fff !important;
+}
+
+.search-container {
+    width: 100%;
+
+}
+
+@media (max-width: 992px) {
+
+    .weekly-scroll,
+    .hourly-scroll {
+        overflow-x: auto;
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .weekly-card,
+    .hourly-scroll {
+        min-width: 130px;
+    }
+}
+
+/* Responsive Navbar Layout Fix */
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .navbar .container-fluid {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    /* Brand at top */
+    .navbar-brand {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Search container */
+    .navbar .d-flex.align-items-center.position-relative {
+        order: 2;
+        justify-content: center;
+        width: 100%;
+        max-width: 320px;
+        display: flex;
+    }
+
+    /* City input expands, button sticks to it */
+    .city-input {
+        flex: 1;
+        padding: 6px 12px;
+        border-radius: 99px 0 0 99px;
+        /* rounded left side only */
+        margin: 0;
+        width: 25%;
+        border-radius: 99px;
+        border: 3px solid transparent;
+        background: rgb(0, 0, 0, 0.15);
+        outline: none;
+        font-weight: 500;
+        transition: 0.25s border;
+        padding-right: 45px;
+        color: #fff;
+    }
+
+    .search-btn {
+        border: none;
+        flex-shrink: 0;
+        border-radius: 0 99px 99px 0;
+        /*rounded right side only */
+        padding: 0 12px;
+        right: 0 !important;
+        /* remove absolute positioning */
+        position: relative;
+    }
+
+    /* Location moves to bottom */
+    .navbar .navbar-brand.d-flex {
+        order: 3;
+        justify-content: center;
+        width: 100%;
+        font-size: 0.95rem;
+    }
+
+    .hour-card {
+        width: 70px;
+        font-size: 0.85rem;
+    }
+
+    .weekly-card {
+        min-width: 100px;
+        font-size: 0.85rem;
+    }
+
+    .display-4 {
+        font-size: 2.2rem !important;
+    }
+}
