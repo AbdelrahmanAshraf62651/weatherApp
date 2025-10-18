@@ -1,5 +1,25 @@
 // Handle search Button click
 document.addEventListener("DOMContentLoaded", () => {
+    function showAlert(message, type = "danger") {
+        const oldAlert = document.querySelector(".alert");
+        if (oldAlert) oldAlert.remove();
+        const alert = document.createElement("div");
+        alert.className = `alert alert-${type} alert-dismissible fade show position-fixed start-50 top-50 translate-middle`;
+        alert.style.zIndex = "1050";
+        alert.style.minWidth = "320px";
+        alert.style.textAlign = "center";
+        alert.style.boxShadow = "0 4px 12px rgba(0, 0, 0, 0.2)";
+        alert.style.padding = "1rem 1.25rem";
+        alert.style.borderRadius = "0.5rem";
+
+        alert.role = "alert";
+        alert.innerHTML = `
+        ${message}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    `;
+        document.body.appendChild(alert);
+        setTimeout(() => alert.remove(), 2000);
+    }
 
     async function updateWeatherUI(weather) {
         if (weather && weather.cod === 200) {
@@ -42,25 +62,18 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("currentIcon").innerHTML = `
             <img src="https://openweathermap.org/img/wn/${iconCode}@2x.png" alt="weather icon">`;
         } else {
-            alert("City not found. Please try again.");
+            showAlert("City not found. Please try again.");
+
         }
     }
 
-    document.querySelector(".search-btn").addEventListener("click", async () => { // edit to on submit
-        console.log("Search button clicked ✅");
-
+    document.querySelector(".search-container").addEventListener("submit", async (e) => {
+        e.preventDefault();
         const city = document.querySelector(".city-input").value.trim();
         if (!city) return;
-
         const weather = await getCityWeather(city);
         await updateWeatherUI(weather);
         console.log(weather);
-
-
-    });
-
-    document.querySelector(".city-input").addEventListener("keypress", e => {
-        if (e.key === "Enter") document.querySelector(".search-btn").click();
     });
 
     (async () => {
