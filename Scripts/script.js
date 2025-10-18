@@ -1,4 +1,3 @@
-// Handle search Button click
 document.addEventListener("DOMContentLoaded", () => {
     function showAlert(message, type = "danger") {
         const oldAlert = document.querySelector(".alert");
@@ -24,14 +23,10 @@ document.addEventListener("DOMContentLoaded", () => {
     async function updateWeatherUI(weather) {
         if (weather && weather.cod === 200) {
             const iconCode = weather.weather[0].icon;
-
-            // Set local time of the searche Country
             const utcTime = Date.now() + new Date().getTimezoneOffset() * 60000;
             const localTime = new Date(utcTime + weather.timezone * 1000);
             const options = { weekday: "long", day: "numeric", month: "long", year: "numeric" };
             document.getElementById("currentDate").textContent = localTime.toLocaleDateString(undefined, options);
-
-            // Change background based on weather
             const localTimestamp = Math.floor(localTime.getTime() / 1000);
             const isDay = localTimestamp >= weather.sys.sunrise && localTimestamp < weather.sys.sunset;
             const condition = weather.weather[0].main.toLowerCase();
@@ -49,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
             document.body.style.backgroundPosition = "center";
             document.body.style.backgroundRepeat = "no-repeat";
 
-            // Data
             document.getElementById("currentTemp").textContent = `${Math.round(weather.main.temp)}°`;
             document.getElementById("feelsLike").textContent = `${weather.main.feels_like}°`;
             document.getElementById("currentCondition").textContent = weather.weather[0].description;

@@ -1,6 +1,6 @@
 body {
     font-family: 'Lato', sans-serif;
-    background: url('./background imgs/default.jpg') center/cover no-repeat fixed;
+    background: url('./background imgs/default.jpg') center/cover no-repeat;
     color: #fff;
     overflow-x: hidden;
     transition: background-image 0.2s ease-in-out;
@@ -13,7 +13,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* INPUT CONTAINER */
 .city-input {
     width: 25%;
     padding: 10px 16px;
@@ -47,11 +46,6 @@ body {
     cursor: pointer;
 }
 
-/* END INPUT CONTAINER */
-
-/* === Hourly and Weekly Scroll Styles === */
-
-/* Consistent scrollbar style */
 .hourly-scroll::-webkit-scrollbar,
 .weekly-scroll::-webkit-scrollbar {
     height: 6px;
@@ -63,8 +57,6 @@ body {
     border-radius: 10px;
 }
 
-/* hourly & weekly cards gap */
-
 .weekly-scroll,
 .hourly-scroll {
     overflow-x: auto;
@@ -72,7 +64,6 @@ body {
     gap: 0.5rem;
 }
 
-/* === Hourly Cards === */
 .hour-card {
     flex: 0 0 auto;
     width: 80px;
@@ -82,7 +73,6 @@ body {
     backdrop-filter: blur(10px);
 }
 
-/* === Weekly Cards === */
 .weekly-card {
     flex: 0 0 auto;
     min-width: 120px;
@@ -99,7 +89,6 @@ body {
     transform: translateY(-5px);
 }
 
-/* Weekly section */
 .weekly-card {
     flex: 1;
     border-top: 1px solid rgba(255, 255, 255, 0.3);
@@ -111,7 +100,6 @@ body {
     font-size: 2rem;
 }
 
-/*  Glow Hover Effect for Hourly Cards */
 .hour-card {
     transition: background 0.3s ease, box-shadow 0.3s ease;
     border-radius: 12px;
@@ -123,7 +111,6 @@ body {
         0 0 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Optional: Glow intensifies when icon is hovered */
 .hour-card .fs-4 {
     transition: transform 0.3s ease, text-shadow 0.3s ease;
 }
@@ -133,7 +120,6 @@ body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
 }
 
-/* ✨ Glow colors based on weather type */
 .hour-card.sunny:hover {
     box-shadow: 0 0 20px rgba(255, 183, 0, 0.4) inset,
         0 0 15px rgba(255, 183, 0, 0.25);
@@ -164,7 +150,6 @@ body {
     background: rgba(100, 150, 255, 0.08);
 }
 
-/* Scrollbar */
 #hourlyStrip::-webkit-scrollbar {
     height: 6px;
 }
@@ -174,7 +159,6 @@ body {
     border-radius: 10px;
 }
 
-/* Data Color */
 #currentTemp,
 #currentCondition,
 #wind,
@@ -208,7 +192,6 @@ body {
     }
 }
 
-/* Responsive Navbar Layout Fix */
 @media (max-width: 768px) {
     body {
         background-attachment: scroll;
@@ -221,13 +204,11 @@ body {
         gap: 0.75rem;
     }
 
-    /* Brand at top */
     .navbar-brand {
         text-align: center;
         width: 100%;
     }
 
-    /* Search container */
     .navbar .d-flex.align-items-center.position-relative {
         order: 2;
         justify-content: center;
@@ -236,12 +217,10 @@ body {
         display: flex;
     }
 
-    /* City input expands, button sticks to it */
     .city-input {
         flex: 1;
         padding: 6px 12px;
         border-radius: 99px 0 0 99px;
-        /* rounded left side only */
         margin: 0;
         width: 25%;
         border-radius: 99px;
@@ -258,14 +237,11 @@ body {
         border: none;
         flex-shrink: 0;
         border-radius: 0 99px 99px 0;
-        /*rounded right side only */
         padding: 0 12px;
         right: 0 !important;
-        /* remove absolute positioning */
         position: relative;
     }
 
-    /* Location moves to bottom */
     .navbar .navbar-brand.d-flex {
         order: 3;
         justify-content: center;
