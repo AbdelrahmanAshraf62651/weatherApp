@@ -78,13 +78,17 @@ document.addEventListener("DOMContentLoaded", () => {
                     const lon = position.coords.longitude;
                     let loadCity = await getLoadCityWeather(lat, lon);
                     await updateWeatherUI(loadCity);
+                },
+                async (error) => {
+                    const cairoWeather = await getCityWeather("Cairo");
+                    await updateWeatherUI(cairoWeather);
                 }
-            )
-        }
-        else {
+            );
+        } else {
             const cairoWeather = await getCityWeather("Cairo");
             await updateWeatherUI(cairoWeather);
         }
     })();
+
 });
 
